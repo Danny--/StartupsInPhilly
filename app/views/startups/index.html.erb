@@ -13,10 +13,19 @@
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
     <% for startup in @startups %>
+        var infowindow = new google.maps.InfoWindow(
+            { content: "<%= startup.website %>" }
+        );
+
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(<%= startup.x.to_f  %>, <%= startup.y.to_f  %>),
           map: map
         });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map, marker);
+        });
+
     <% end  %>
   }
 
