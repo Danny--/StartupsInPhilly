@@ -11,6 +11,24 @@
     };
 
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(39.947697,-75.15008),
+      map: map
+    });
+
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(39.94745,-75.149233),
+      map: map
+    });
+
+    <% for startup in @startups %>
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(<%= startup.x.to_f  %>, <%= startup.y.to_f  %>),
+          map: map
+        });
+    <% end  %>
+
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
