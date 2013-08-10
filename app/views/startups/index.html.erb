@@ -10,23 +10,27 @@
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
     <% for startup in @startups %>
-        var infowindow = new google.maps.InfoWindow(
-            { content: "<%= startup.website %>" }
-        );
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(<%= startup.x.to_f  %>, <%= startup.y.to_f  %>),
+        map: map,
+        title: "<%= startup.name  %>"
+      });
 
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(<%= startup.x.to_f  %>, <%= startup.y.to_f  %>),
-          map: map
-        });
-
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.open(map, marker);
-        });
-
+      attachWindow(marker, "<%= startup.website %>");
     <% end  %>
+  }
+
+  function attachWindow(marker, message) {
+    var infowindow = new google.maps.InfoWindow({
+      content: message
+    });
+
+    google.maps.event.addListener(marker, 'click', function(){
+      infowindow.open(marker.get('map'), marker);
+    });
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
