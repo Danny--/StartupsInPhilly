@@ -41,13 +41,15 @@
     windows[count] = infowindow;
     count++;
 
+    google.maps.event.addListener(infowindow, 'closeclick', function(){
+      dehighlight(name);
+    });
+
     google.maps.event.addListener(marker, 'click', function(){
-      if (currentwindow == null)
-      {
+      if (currentwindow == null) {
         currentwindow = infowindow;
       }
-      else
-      {
+      else {
         currentwindow.close();
       }
       highlight(name, false);
@@ -85,6 +87,16 @@
           elements[i].scrollIntoView(false);
         }
         selectedListElement = elements[i];
+        break;
+      }
+    }
+  }
+
+  function dehighlight(name) {
+    elements = document.getElementsByTagName('a');
+    for (var i=0; i<elements.length; i++) {
+      if (elements[i].innerText == name) {
+        selectedListElement.style.color = '#2E282A';
         break;
       }
     }
