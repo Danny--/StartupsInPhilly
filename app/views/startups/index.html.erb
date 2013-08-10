@@ -19,13 +19,14 @@
         map: map
       });
 
-      attachWindow(marker, "<%= startup.website %>");
+    attachWindow(marker, "<%= startup.name %>", "<%= startup.website %>", "<%= startup.description %>");
     <% end  %>
   }
 
-  function attachWindow(marker, message) {
+  function attachWindow(marker, name, website, description) {
+    var contentString = '<div id="content"><h4><a href="' + website + '" target="_blank">' + name + '</a></h4><div id="bodyContent"><p>'+ description + '</p>';
     var infowindow = new google.maps.InfoWindow({
-      content: message
+      content: contentString
     });
 
     google.maps.event.addListener(marker, 'click', function(){
