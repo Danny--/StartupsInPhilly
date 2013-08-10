@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130810093419) do
+ActiveRecord::Schema.define(version: 20130810184408) do
 
   create_table "startups", force: true do |t|
     t.string   "name"
     t.string   "website"
+    t.string   "address"
     t.string   "description"
     t.string   "x"
     t.string   "y"

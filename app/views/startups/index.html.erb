@@ -50,3 +50,14 @@
 
 
 <h1>Mapping Philly's Startups</h1>
+
+<div id="sidebar">
+  <ul>
+    <% for startup in @startups  %>
+      <li>
+        <h4><a href="google.com"><%= startup.name %></a></h4>
+        <h5><%= startup.address %></h5>
+      </li>
+    <% end %>
+  </ul>
+</div>
