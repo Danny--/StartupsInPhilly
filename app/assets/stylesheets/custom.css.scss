@@ -1,10 +1,11 @@
 @import "bootstrap";
 
 html {
-  height: 80%;
+  height: 100%;
   width: 80%;
   margin-left:auto;
   margin-right:auto;
+  overflow-y:scroll;
 }
 
 body {
@@ -16,7 +17,7 @@ body {
 
 #map-canvas {
   margin-top: 30px;
-  height: 100%;
+  height: 80%;
   max-width: none;
   border: 1px solid #bbb;
 }
@@ -26,7 +27,28 @@ body {
 }
 
 h1 {
+  font-size: 3.5em;
   line-height: 1;
   letter-spacing: -2px;
   text-align: left;
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  color: #999;
+}
+
+footer a {
+  color: #555;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 10px;
 }
