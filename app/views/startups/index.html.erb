@@ -3,6 +3,7 @@
 </script>
 
 <script type="text/javascript">
+
   function initialize() {
     var mapOptions = {
       center: new google.maps.LatLng(39.951719, -75.163877),
@@ -15,8 +16,7 @@
     <% for startup in @startups %>
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(<%= startup.x.to_f  %>, <%= startup.y.to_f  %>),
-        map: map,
-        title: "<%= startup.name  %>"
+        map: map
       });
 
       attachWindow(marker, "<%= startup.website %>");
@@ -30,6 +30,7 @@
 
     google.maps.event.addListener(marker, 'click', function(){
       infowindow.open(marker.get('map'), marker);
+      setTimeout(function(){infowindow.close();}, 5000);
     });
   }
 
