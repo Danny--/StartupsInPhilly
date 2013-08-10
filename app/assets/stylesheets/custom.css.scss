@@ -48,10 +48,7 @@ body {
 #sidebar a {
   color: #2E282A;
   text-decoration: none;
-}
-
-#sidebar a:hover {
-  color: #6782C2;
+  cursor: pointer;
 }
 
 #sidebar h5 {

@@ -10,6 +10,7 @@
   var markers = new Array();
   var names = new Array();
   var selectedListElement = null;
+  var map = null;
 
   function initialize() {
     var mapOptions = {
@@ -18,7 +19,7 @@
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
     <% for startup in @startups %>
       var marker = new google.maps.Marker({
