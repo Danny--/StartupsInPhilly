@@ -4,6 +4,8 @@
 
 <script type="text/javascript">
 
+  var currentwindow = null;
+
   function initialize() {
     var mapOptions = {
       center: new google.maps.LatLng(39.951719, -75.163877),
@@ -20,7 +22,7 @@
       });
 
     attachWindow(marker, "<%= startup.name %>", "<%= startup.website %>", "<%= startup.description %>");
-    <% end  %>
+    <% end %>
   }
 
   function attachWindow(marker, name, website, description) {
@@ -30,8 +32,16 @@
     });
 
     google.maps.event.addListener(marker, 'click', function(){
+      if (currentwindow == null)
+      {
+        currentwindow = infowindow;
+      }
+      else
+      {
+        currentwindow.close();
+      }
       infowindow.open(marker.get('map'), marker);
-      setTimeout(function(){infowindow.close();}, 15000);
+      currentwindow = infowindow;
     });
   }
 
