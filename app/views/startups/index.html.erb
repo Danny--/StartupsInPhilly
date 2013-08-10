@@ -9,6 +9,7 @@
   var windows = new Array();
   var markers = new Array();
   var names = new Array();
+  var selectedListElement = null;
 
   function initialize() {
     var mapOptions = {
@@ -48,6 +49,7 @@
       {
         currentwindow.close();
       }
+      highlight(name);
       infowindow.open(marker.get('map'), marker);
       currentwindow = infowindow;
     });
@@ -64,6 +66,21 @@
         }
         windows[i].open(markers[i].get('map'), markers[i]);
         currentwindow = windows[i];
+        highlight(name.text);
+        break;
+      }
+    }
+  }
+
+  function highlight(name) {
+    elements = document.getElementsByTagName('a');
+    for (var i=0; i<elements.length; i++) {
+      if (elements[i].innerText == name) {
+        if (selectedListElement != null) {
+          selectedListElement.style.color = '#2E282A';
+        }
+        elements[i].style.color = '#6782C2';
+        selectedListElement = elements[i];
         break;
       }
     }
