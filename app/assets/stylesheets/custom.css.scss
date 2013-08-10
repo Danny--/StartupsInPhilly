@@ -10,15 +10,23 @@ html {
 body {
   height: 100%;
   margin: 0;
-  padding: 0;
+  padding-top: 10px;
   width: 100%;
 }
 
 #map-canvas {
+  margin-top: 30px;
   height: 100%;
   max-width: none;
+  border: 1px solid #bbb;
 }
 
 #map-canvas img {
   max-width: none;
+}
+
+h1 {
+  line-height: 1;
+  letter-spacing: -2px;
+  text-align: left;
 }
