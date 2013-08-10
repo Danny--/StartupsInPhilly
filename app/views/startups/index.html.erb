@@ -50,7 +50,7 @@
       {
         currentwindow.close();
       }
-      highlight(name);
+      highlight(name, false);
       infowindow.open(marker.get('map'), marker);
       currentwindow = infowindow;
     });
@@ -67,21 +67,23 @@
         }
         windows[i].open(markers[i].get('map'), markers[i]);
         currentwindow = windows[i];
-        highlight(name.text);
+        highlight(name.text, true);
         break;
       }
     }
   }
 
-  function highlight(name) {
+  function highlight(name, clickedFromList) {
     elements = document.getElementsByTagName('a');
     for (var i=0; i<elements.length; i++) {
       if (elements[i].innerText == name) {
         if (selectedListElement != null) {
-          selectedListElement.style.color = '#2E282A';
+            selectedListElement.style.color = '#2E282A';
         }
         elements[i].style.color = '#0088cc';
-        elements[i].scrollIntoView(false);
+        if (clickedFromList == false) {
+          elements[i].scrollIntoView(false);
+        }
         selectedListElement = elements[i];
         break;
       }
