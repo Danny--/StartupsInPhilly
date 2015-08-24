@@ -1,5 +1,1 @@
-www.startupsinphilly.com
 
-Ruby, Rails, Javascript, Google Maps
-
-Feel free to contribute!
